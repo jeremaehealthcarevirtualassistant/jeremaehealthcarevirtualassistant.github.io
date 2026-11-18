@@ -1,137 +1,1549 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jeremae Mercado | Healthcare Virtual Assistant</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1f2d3d; line-height: 1.6; background: #f6f9fb; }
-  header { background: linear-gradient(135deg, #0b5d7a, #1a9ba1); color: #fff; padding: 70px 20px; text-align: center; }
-  header h1 { font-size: 2.4rem; margin-bottom: 8px; }
-  header p { font-size: 1.15rem; opacity: 0.95; }
-  .btn { display: inline-block; margin-top: 22px; padding: 12px 28px; background: #fff; color: #0b5d7a; border-radius: 30px; text-decoration: none; font-weight: 600; }
-  section { max-width: 980px; margin: 0 auto; padding: 50px 20px; }
-  h2 { color: #0b5d7a; font-size: 1.7rem; margin-bottom: 20px; border-bottom: 3px solid #1a9ba1; display: inline-block; padding-bottom: 4px; }
-  .card { background: #fff; border-radius: 12px; padding: 22px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-  .card h3 { color: #0b5d7a; margin-bottom: 2px; }
-  .meta { color: #6b7c8d; font-size: 0.92rem; margin-bottom: 10px; }
-  ul { padding-left: 20px; }
-  li { margin-bottom: 6px; }
-  .skills { display: flex; flex-wrap: wrap; gap: 10px; }
-  .skills span { background: #e3f4f5; color: #0b5d7a; padding: 8px 16px; border-radius: 20px; font-size: 0.95rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-  footer { background: #0b5d7a; color: #fff; text-align: center; padding: 30px 20px; }
-  footer a { color: #fff; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Jeremae Mercado | Healthcare Virtual Assistant</title>
+
+  <meta name="description" content="Healthcare Virtual Assistant providing medical billing support, insurance verification, referral coordination, quality control, and healthcare administrative support for US healthcare practices.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #FAF8F3;
+      --ivory: #E8E3D8;
+      --sage: #A8B9A5;
+      --sage-light: #E7EDE5;
+      --forest: #344A3E;
+      --forest-dark: #25382E;
+      --text: #39463D;
+      --muted: #7C847B;
+      --white: #FFFFFF;
+      --line: #DDDCD3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      padding: 22px 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--forest);
+      font-weight: 600;
+    }
+
+    .brand small {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      font-size: .92rem;
+    }
+
+    .nav-links a:hover {
+      color: #758C73;
+    }
+
+    /* BUTTONS */
+
+    .btn {
+      display: inline-block;
+      padding: 13px 25px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: .25s ease;
+      font-size: .94rem;
+    }
+
+    .btn-primary {
+      background: var(--forest);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--forest-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--forest);
+      color: var(--forest);
+    }
+
+    .btn-secondary:hover {
+      background: var(--sage-light);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 90px 0 80px;
+      background:
+        radial-gradient(circle at 90% 10%, #DCE6D8 0%, transparent 35%),
+        var(--cream);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-size: .78rem;
+      color: #71836E;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      color: var(--forest);
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: #82977F;
+      font-style: italic;
+    }
+
+    .hero-text {
+      font-size: 1.08rem;
+      max-width: 580px;
+      color: #68736A;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-note {
+      margin-top: 25px;
+      font-size: .87rem;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 410px;
+      background: var(--ivory);
+      border-radius: 48% 48% 12px 12px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 410px;
+      object-fit: cover;
+      border-radius: 48% 48% 12px 12px;
+    }
+
+    .hero-placeholder {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .hero-placeholder .monogram {
+      font-family: 'DM Serif Display', serif;
+      font-size: 5rem;
+      color: var(--sage);
+    }
+
+    .hero-placeholder p {
+      color: var(--forest);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+
+    .floating-card {
+      position: absolute;
+      bottom: 25px;
+      left: 18px;
+      background: rgba(250,248,243,.95);
+      padding: 18px 22px;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(40,60,45,.08);
+      max-width: 250px;
+    }
+
+    .floating-card strong {
+      color: var(--forest);
+      display: block;
+    }
+
+    .floating-card span {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    /* SECTION STYLES */
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      color: var(--forest);
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .about-highlight {
+      background: var(--sage-light);
+      border-radius: 12px;
+      padding: 35px;
+    }
+
+    .about-highlight h3 {
+      font-size: 1.8rem;
+      color: var(--forest;
+      margin-bottom: 15px;
+    }
+
+    .about-copy p {
+      margin-bottom: 18px;
+      color: #68736A;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 18px;
+      background: var(--white);
+      border-radius: 8px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.65rem;
+      color: var(--forest);
+    }
+
+    .stat span {
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    /* SERVICES */
+
+    .services {
+      background: var(--cream);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 30px;
+      background: var(--white);
+      border: 1px solid #E8E8DF;
+      border-radius: 12px;
+      transition: .25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(40,60,45,.06);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--sage-light);
+      color: var(--forest);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      font-size: 1.45rem;
+      color: var(--forest;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .service-card ul {
+      margin-top: 15px;
+      padding-left: 18px;
+      color: #657067;
+      font-size: .88rem;
+    }
+
+    .service-card li {
+      margin-bottom: 6px;
+    }
+
+    /* SPECIALTY SUPPORT */
+
+    .specialty {
+      background: var(--forest);
+      color: var(--cream);
+    }
+
+    .specialty .section-heading h2 {
+      color: var(--cream);
+    }
+
+    .specialty .section-heading p {
+      color: #D5DDD3;
+    }
+
+    .specialty-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .specialty-item {
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 25px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .specialty-item h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      color: #DCE7D8;
+    }
+
+    .specialty-item p {
+      font-size: .93rem;
+      color: #D1D9D1;
+    }
+
+    /* EXPERIENCE */
+
+    .experience {
+      background: var(--white);
+    }
+
+    .timeline {
+      border-left: 2px solid var(--sage);
+      margin-left: 10px;
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 35px;
+      padding: 28px;
+      border: 1px solid #ECECE4;
+      border-radius: 10px;
+      background: var(--cream);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -39px;
+      top: 34px;
+      width: 14px;
+      height: 14px;
+      background: var(--sage);
+      border: 3px solid var(--white);
+      border-radius: 50%;
+    }
+
+    .timeline-item h3 {
+      color: var(--forest);
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .timeline-meta {
+      font-size: .88rem;
+      color: #839080;
+      margin-bottom: 15px;
+    }
+
+    .timeline-item ul {
+      padding-left: 20px;
+      color: #68736A;
+    }
+
+    .timeline-item li {
+      margin-bottom: 7px;
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio {
+      background: var(--cream);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .portfolio-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #E8E8DF;
+    }
+
+    .portfolio-image {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--sage-light);
+      color: var(--forest);
+      padding: 25px;
+    }
+
+    .portfolio-image.alt {
+      background: #E8E3D8;
+    }
+
+    .portfolio-image.dark {
+      background: #344A3E;
+      color: #F5F2E9;
+    }
+
+    .portfolio-image .sample {
+      width: 100%;
+      padding: 18px;
+      background: rgba(255,255,255,.75);
+      border-radius: 8px;
+      color: var(--forest);
+      box-shadow: 0 4px 15px rgba(0,0,0,.04);
+    }
+
+    .portfolio-image.dark .sample {
+      background: rgba(250,248,243,.1);
+      color: #fff;
+    }
+
+    .sample small {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: .65rem;
+      margin-bottom: 8px;
+    }
+
+    .sample strong {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+
+    .sample .sample-line {
+      height: 6px;
+      border-radius: 5px;
+      background: #D5E0D2;
+      margin-top: 12px;
+      width: 90%;
+    }
+
+    .sample .sample-line.short {
+      width: 55%;
+    }
+
+    .portfolio-content {
+      padding: 24px;
+    }
+
+    .portfolio-content h3 {
+      color: var(--forest;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .portfolio-content p {
+      font-size: .91rem;
+      color: var(--muted);
+    }
+
+    .portfolio-note {
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    /* SKILLS */
+
+    .skills {
+      background: var(--white);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+
+    .skill-group h3 {
+      color: var(--forest);
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tags span {
+      background: var(--sage-light);
+      color: var(--forest);
+      padding: 9px 15px;
+      border-radius: 30px;
+      font-size: .88rem;
+    }
+
+    /* CERTIFICATES & EDUCATION */
+
+    .credentials {
+      background: var(--cream);
+    }
+
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .credential-card {
+      background: var(--white);
+      padding: 28px;
+      border-radius: 10px;
+      border: 1px solid #E8E8DF;
+    }
+
+    .credential-card h3 {
+      font-size: 1.4rem;
+      color: var(--forest);
+      margin-bottom: 8px;
+    }
+
+    .credential-card p {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* CTA */
+
+    .cta {
+      background: var(--ivory);
+      text-align: center;
+    }
+
+    .cta-box {
+      background: var(--forest);
+      color: var(--cream);
+      border-radius: 16px;
+      padding: 65px 35px;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      margin-bottom: 18px;
+    }
+
+    .cta-box p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: #D9E0D7;
+    }
+
+    .cta-box .btn {
+      background: var(--cream);
+      color: var(--forest);
+    }
+
+    .cta-box .btn:hover {
+      background: var(--sage);
+    }
+
+    /* REFERENCES */
+
+    .references {
+      background: var(--white);
+    }
+
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .reference-card {
+      padding: 25px;
+      background: var(--cream);
+      border-radius: 10px;
+    }
+
+    .reference-card h3 {
+      color: var(--forest);
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+
+    .reference-card p {
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: var(--cream);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+
+    .contact-info h3 {
+      color: var(--forest);
+      font-size: 1.65rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 25px;
+    }
+
+    .contact-list li {
+      margin-bottom: 13px;
+      color: var(--text);
+      overflow-wrap: anywhere;
+    }
+
+    .contact-panel {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+    }
+
+    .contact-panel h3 {
+      font-family: 'DM Serif Display', serif;
+      color: var(--forest);
+      font-size: 1.65rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--forest-dark);
+      color: var(--cream);
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    footer p {
+      font-size: .84rem;
+      color: #D0D8D0;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-size: .86rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--sage);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        max-width: 520px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .service-grid,
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reference-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        font-size: .82rem;
+      }
+
+      .nav-links .btn {
+        padding: 10px 14px;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .service-grid,
+      .portfolio-grid,
+      .specialty-grid,
+      .skills-grid,
+      .credentials-grid,
+      .reference-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual,
+      .hero-visual img {
+        min-height: 320px;
+        height: 320px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-buttons .btn {
+        text-align: center;
+      }
+
+      .cta-box {
+        padding: 45px 22px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Jeremae Mercado</h1>
-  <p>Healthcare Virtual Assistant | Scheduling, Billing and Referral Support</p>
-  <p>6+ years of US healthcare BPO experience</p>
-  <a class="btn" href="#contact">Work With Me</a>
-</header>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        Jeremae Mercado
+        <small>Healthcare Virtual Assistant</small>
+      </a>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="card">
-    <p>I am a healthcare virtual assistant with more than six years of experience in US healthcare customer service, medical billing support, and quality control. I help medical practices stay organized by handling scheduling, insurance verification, billing follow-ups, and referral coordination with accuracy and a strong respect for HIPAA compliance.</p>
-  </div>
-</section>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a href="https://calendly.com/jeremae-workemail/30min"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-primary">Book a Call</a>
+      </div>
+    </div>
+  </nav>
 
-<section id="services">
-  <h2>Services</h2>
-  <div class="grid">
-    <div class="card"><h3>Scheduling Support</h3><p>Appointment booking, reminders, calendar management, and patient communication.</p></div>
-    <div class="card"><h3>Billing Support</h3><p>Claims review, eligibility and benefits verification, and billing follow-ups.</p></div>
-    <div class="card"><h3>Referral Coordination</h3><p>Referral intake, tracking, and follow-through between providers and practices.</p></div>
-    <div class="card"><h3>Quality Control</h3><p>Audits, documentation review, and accuracy checks to reduce errors.</p></div>
-  </div>
-</section>
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container hero-grid">
 
-<section id="experience">
-  <h2>Experience</h2>
+      <div>
+        <p class="eyebrow">Reliable Healthcare Administrative Support</p>
 
-  <div class="card">
-    <h3>Healthcare Virtual Assistant (Referral Specialist)</h3>
-    <div class="meta">Animo Sano Psychiatry | Project-based, 2 months</div>
-    <ul>
-      <li>Managed referral intake and tracking for a psychiatric practice.</li>
-      <li>Built and used a referral tracker in Google Sheets to organize incoming referrals and flag urgent cases.</li>
-      <li>Coordinated follow-ups to keep referrals moving and documentation complete.</li>
-    </ul>
-  </div>
+        <h1>
+          Helping your practice run smoothly,
+          <span>one task at a time.</span>
+        </h1>
 
-  <div class="card">
-    <h3>Quality Control Analyst / Billing Support Associate</h3>
-    <div class="meta">Omega Healthcare Management Services Inc. | Feb 2022 to Jul 2025</div>
-    <ul>
-      <li>Performed quality audits on medical billing and claims work to maintain accuracy and compliance.</li>
-      <li>Supported billing operations, including claims and eligibility verification.</li>
-      <li>Documented findings and gave feedback to improve team performance.</li>
-    </ul>
-  </div>
+        <p class="hero-text">
+          Behind every well-organized practice is someone making sure
+          the details don't get overlooked. I help healthcare providers
+          manage billing-related tasks, insurance verification,
+          referrals, and administrative workflows so they can focus
+          more on their patients.
+        </p>
 
-  <div class="card">
-    <h3>Customer Service Representative (Healthcare and Insurance)</h3>
-    <div class="meta">Teleperformance Cebu | Nov 2017 to Jan 2021</div>
-    <ul>
-      <li>Handled inbound healthcare and insurance inquiries for US clients.</li>
-      <li>Verified eligibility and benefits and resolved member concerns.</li>
-      <li>Maintained accurate documentation in CRM systems while following HIPAA guidelines.</li>
-    </ul>
-  </div>
-</section>
+        <div class="hero-buttons">
+          <a href="https://calendly.com/jeremae-workemail/30min"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary">
+            Schedule a Discovery Call
+          </a>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <span>Healthcare Insurance</span>
-    <span>Medical Billing</span>
-    <span>Claims and Eligibility Verification</span>
-    <span>Quality Audits</span>
-    <span>HIPAA Compliance</span>
-    <span>CRM</span>
-    <span>Documentation</span>
-    <span>Microsoft Office</span>
-    <span>Google Sheets</span>
-  </div>
-</section>
+          <a href="#services" class="btn btn-secondary">
+            Explore My Services
+          </a>
+        </div>
 
-<section id="certificates">
-  <h2>Certificates</h2>
-  <div class="grid">
-    <div class="card"><h3>Medical Administrative Assistants and Office Procedures</h3><div class="meta">MedCerts via Coursera | Oct 16, 2026</div></div>
-    <div class="card"><h3>Medical Billing and Coding Essentials</h3><div class="meta">MedCerts via Coursera | Oct 17, 2026</div></div>
-  </div>
-</section>
+        <p class="hero-note">
+          6+ years of US healthcare BPO experience · Remote healthcare support
+        </p>
+      </div>
 
-<section id="education">
-  <h2>Education</h2>
-  <div class="card">
-    <h3>BS in Business Administration, Major in Quality Management</h3>
-    <div class="meta">Cebu Institute of Technology - University</div>
-  </div>
-</section>
+      <div class="hero-visual">
+        <!-- Replace this placeholder with your portrait or portfolio photo -->
+        <!-- Example: <img src="images/jeremae-photo.jpg" alt="Jeremae Mercado"> -->
 
-<section id="references">
-  <h2>Character References</h2>
-  <div class="grid">
-    <div class="card"><h3>Jeremiah Magallanes</h3><div class="meta">Healthcare Executive Assistant, Animo Sano Psychiatry</div></div>
-    <div class="card"><h3>Jonathan Maglangit</h3><div class="meta">QCA Team Lead, Omega</div></div>
-    <div class="card"><h3>April Rose Calzita</h3><div class="meta">Senior Medical Claims Specialist, Teleperformance</div></div>
-  </div>
-</section>
+        <div class="hero-placeholder">
+          <div class="monogram">JM</div>
+          <p>Healthcare Support • Accuracy • Care</p>
+        </div>
 
-<footer id="contact">
-  <h2 style="color:#fff;border-color:#fff;">Contact</h2>
-  <p>Email: <a href="mailto:jeremae.workemail@gmail.com">jeremae.workemail@gmail.com</a></p>
-  <p>Phone: +63 905 211 2058</p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/jeremae-mercado-49745a3a1">linkedin.com/in/jeremae-mercado-49745a3a1</a></p>
-  <p>Time zone: PHT (UTC+8) | Cebu, Philippines</p>
-</footer>
+        <div class="floating-card">
+          <strong>Reliable behind-the-scenes support</strong>
+          <span>Helping keep healthcare workflows organized and on track.</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+
+      <div class="about-highlight">
+        <p class="eyebrow">A little about me</p>
+        <h3>Support that understands the healthcare workflow.</h3>
+
+        <p>
+          My background in healthcare customer service, billing operations,
+          and quality control has taught me that even the smallest details
+          can make a difference in a practice's daily operations.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>6+</strong>
+            <span>Years of healthcare experience</span>
+          </div>
+
+          <div class="stat">
+            <strong>US</strong>
+            <span>Healthcare workflow experience</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-copy">
+        <div class="section-heading">
+          <p class="eyebrow">About Jeremae</p>
+          <h2>A dependable extra set of hands for your practice.</h2>
+        </div>
+
+        <p>
+          I am a Healthcare Virtual Assistant with over six years of
+          experience in US healthcare customer service, medical billing
+          support, and quality control. Throughout my experience, I've
+          developed a strong foundation in insurance processes,
+          documentation accuracy, claims-related work, and patient
+          communication.
+        </p>
+
+        <p>
+          I also have experience supporting behavioral health referral
+          workflows, organizing referral information, tracking incoming
+          requests, and coordinating follow-ups to help ensure that
+          documentation and next steps don't get missed.
+        </p>
+
+        <p>
+          I believe good administrative support is more than completing
+          tasks—it's being proactive, dependable, detail-oriented, and
+          someone a provider can feel comfortable relying on.
+        </p>
+
+        <p>
+          My goal is to make your day a little lighter by providing
+          thoughtful, consistent, and organized support behind the scenes.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">What I can help with</p>
+        <h2>Administrative support designed around your practice.</h2>
+        <p>
+          Flexible assistance with essential healthcare administrative
+          tasks, helping you maintain organized workflows and consistent
+          follow-through.
+        </p>
+      </div>
+
+      <div class="service-grid">
+
+        <div class="service-card">
+          <div class="service-icon">✦</div>
+          <h3>Insurance Verification</h3>
+          <p>Helping confirm patient coverage and insurance details before services are rendered.</p>
+          <ul>
+            <li>Eligibility and benefits verification</li>
+            <li>Insurance information review</li>
+            <li>Coverage documentation</li>
+            <li>Verification follow-ups</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✦</div>
+          <h3>Medical Billing Support</h3>
+          <p>Administrative support for billing workflows and outstanding claims-related tasks.</p>
+          <ul>
+            <li>Billing follow-ups</li>
+            <li>Claims status inquiries</li>
+            <li>Documentation review</li>
+            <li>Billing-related organization</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✦</div>
+          <h3>Referral Coordination</h3>
+          <p>Helping keep referral information organized and the coordination process moving.</p>
+          <ul>
+            <li>Referral intake and tracking</li>
+            <li>Referral status follow-ups</li>
+            <li>Provider coordination</li>
+            <li>Referral tracker maintenance</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✦</div>
+          <h3>Quality Control</h3>
+          <p>Detail-focused review and quality checks to help maintain accuracy.</p>
+          <ul>
+            <li>Process audits</li>
+            <li>Documentation accuracy</li>
+            <li>Error identification</li>
+            <li>Quality feedback and reporting</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✦</div>
+          <h3>Patient Coordination</h3>
+          <p>Professional communication and assistance with routine patient-related administrative needs.</p>
+          <ul>
+            <li>Patient inquiries</li>
+            <li>Administrative follow-ups</li>
+            <li>Information coordination</li>
+            <li>Service-related communication</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✦</div>
+          <h3>General Admin Support</h3>
+          <p>Additional administrative help to keep your daily operations more organized.</p>
+          <ul>
+            <li>Data entry</li>
+            <li>Spreadsheet management</li>
+            <li>Document organization</li>
+            <li>Administrative task support</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALTY -->
+  <section class="specialty">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">Healthcare-focused support</p>
+        <h2>Familiar with the details that keep care moving.</h2>
+        <p>
+          My professional background is built around healthcare operations,
+          insurance processes, documentation, and coordination.
+        </p>
+      </div>
+
+      <div class="specialty-grid">
+
+        <div class="specialty-item">
+          <h3>Insurance & Benefits</h3>
+          <p>
+            Familiarity with insurance eligibility, benefit inquiries,
+            coverage information, and insurance-related documentation.
+          </p>
+        </div>
+
+        <div class="specialty-item">
+          <h3>Billing & Claims Processes</h3>
+          <p>
+            Experience supporting billing-related operations, claims review,
+            follow-ups, and identifying discrepancies that need attention.
+          </p>
+        </div>
+
+        <div class="specialty-item">
+          <h3>Behavioral Health Referrals</h3>
+          <p>
+            Experience organizing incoming referrals, maintaining tracking
+            sheets, coordinating next steps, and following up on referral
+            documentation.
+          </p>
+        </div>
+
+        <div class="specialty-item">
+          <h3>Quality & Accuracy</h3>
+          <p>
+            Quality-focused experience reviewing work, identifying errors,
+            documenting findings, and supporting process consistency.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience" id="experience">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">Professional background</p>
+        <h2>Experience built through real healthcare operations.</h2>
+        <p>
+          A background in customer service, healthcare processes, billing
+          support, and quality assurance.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h3>Healthcare Virtual Assistant — Referral Specialist</h3>
+          <div class="timeline-meta">
+            Animo Sano Psychiatry · Project-Based · 2 Months
+          </div>
+          <ul>
+            <li>Managed incoming referral information and referral tracking for a psychiatric practice.</li>
+            <li>Created and maintained a Google Sheets referral tracker for organizing referrals and identifying urgent cases.</li>
+            <li>Coordinated follow-ups to support referral progress and documentation completion.</li>
+            <li>Helped maintain organized referral workflows.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Quality Control Analyst / Billing Support Associate</h3>
+          <div class="timeline-meta">
+            Omega Healthcare Management Services Inc. · Feb 2022 – Jul 2025
+          </div>
+          <ul>
+            <li>Performed quality audits on medical billing and claims-related work.</li>
+            <li>Supported billing operations, claims processes, and eligibility verification.</li>
+            <li>Reviewed documentation for accuracy and process compliance.</li>
+            <li>Documented audit findings and provided feedback to help improve team performance.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Customer Service Representative — Healthcare & Insurance</h3>
+          <div class="timeline-meta">
+            Teleperformance Cebu · Nov 2017 – Jan 2021
+          </div>
+          <ul>
+            <li>Handled inbound healthcare and insurance inquiries for US members.</li>
+            <li>Assisted with insurance eligibility, benefits, and member concerns.</li>
+            <li>Maintained accurate documentation using CRM systems.</li>
+            <li>Handled sensitive information with professionalism and privacy awareness.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">Work samples & capabilities</p>
+        <h2>A glimpse into the work I do.</h2>
+        <p>
+          A closer look at healthcare administrative workflows, organization,
+          tracking, and quality-focused tasks I've handled or developed.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+
+        <div class="portfolio-card">
+          <div class="portfolio-image">
+            <div class="sample">
+              <small>Referral Coordination</small>
+              <strong>Referral Tracking Workflow</strong>
+              <div class="sample-line"></div>
+              <div class="sample-line short"></div>
+              <div class="sample-line"></div>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h3>Referral Tracking & Coordination</h3>
+            <p>
+              Organizing referral information, tracking statuses, identifying
+              priority cases, and maintaining follow-up visibility.
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image alt">
+            <div class="sample">
+              <small>Insurance & Billing</small>
+              <strong>Eligibility and Claims Support</strong>
+              <div class="sample-line"></div>
+              <div class="sample-line short"></div>
+              <div class="sample-line"></div>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h3>Insurance & Billing Support</h3>
+            <p>
+              Supporting insurance verification, claims-related processes,
+              billing follow-ups, and documentation organization.
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div class="portfolio-image dark">
+            <div class="sample">
+              <small>Quality Assurance</small>
+              <strong>Accuracy & Quality Review</strong>
+              <div class="sample-line"></div>
+              <div class="sample-line short"></div>
+              <div class="sample-line"></div>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <h3>Quality Control & Documentation</h3>
+            <p>
+              Reviewing records, identifying inconsistencies, documenting
+              findings, and supporting accurate work processes.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="portfolio-note">
+        Portfolio visuals are illustrative workflow previews. Actual work
+        samples can be shared in a privacy-safe format, with confidential
+        information removed.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">Professional strengths</p>
+        <h2>Skills, tools & expertise.</h2>
+        <p>
+          A combination of healthcare knowledge, process awareness,
+          attention to detail, and practical administrative skills.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-group">
+          <h3>Core Expertise</h3>
+          <div class="skill-tags">
+            <span>Healthcare Insurance</span>
+            <span>Medical Billing Support</span>
+            <span>Claims Follow-ups</span>
+            <span>Eligibility Verification</span>
+            <span>Referral Coordination</span>
+            <span>Quality Audits</span>
+            <span>Documentation Review</span>
+            <span>Patient Coordination</span>
+            <span>HIPAA Awareness</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Tools & Technology</h3>
+          <div class="skill-tags">
+            <span>Google Workspace</span>
+            <span>Google Sheets</span>
+            <span>Microsoft Office</span>
+            <span>CRM Platforms</span>
+            <span>Data Entry</span>
+            <span>Documentation Systems</span>
+            <span>Remote Communication Tools</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES & EDUCATION -->
+  <section class="credentials" id="credentials">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">Learning & development</p>
+        <h2>Building knowledge. Improving every day.</h2>
+      </div>
+
+      <div class="credentials-grid">
+
+        <div class="credential-card">
+          <p class="eyebrow">Certification</p>
+          <h3>Medical Administrative Assistants and Office Procedures</h3>
+          <p>MedCerts via Coursera</p>
+          <p>October 16, 2026</p>
+        </div>
+
+        <div class="credential-card">
+          <p class="eyebrow">Certification</p>
+          <h3>Medical Billing and Coding Essentials</h3>
+          <p>MedCerts via Coursera</p>
+          <p>October 17, 2026</p>
+        </div>
+
+        <div class="credential-card">
+          <p class="eyebrow">Education</p>
+          <h3>BS in Business Administration</h3>
+          <p>Major in Quality Management</p>
+          <p>Cebu Institute of Technology – University</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="booking">
+    <div class="container">
+      <div class="cta-box">
+
+        <p class="eyebrow">Let's work together</p>
+
+        <h2>Let's make your workload a little lighter.</h2>
+
+        <p>
+          Whether you need help with insurance verification, billing
+          follow-ups, referral coordination, or healthcare administrative
+          tasks, let's talk about how I can support your practice.
+        </p>
+
+        <a href="https://calendly.com/jeremae-workemail/30min"
+           target="_blank" rel="noopener noreferrer"
+           class="btn">
+          Book Your 30-Minute Discovery Call
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section class="references" id="references">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">Professional recommendations</p>
+        <h2>People I've worked with.</h2>
+        <p>
+          Professional references who can speak to my experience,
+          work ethic, and collaboration.
+        </p>
+      </div>
+
+      <div class="reference-grid">
+
+        <div class="reference-card">
+          <h3>Jeremiah Magallanes</h3>
+          <p>Healthcare Executive Assistant</p>
+          <p>Animo Sano Psychiatry</p>
+        </div>
+
+        <div class="reference-card">
+          <h3>Jonathan Maglangit</h3>
+          <p>QCA Team Lead</p>
+          <p>Omega Healthcare</p>
+        </div>
+
+        <div class="reference-card">
+          <h3>April Rose Calzita</h3>
+          <p>Senior Medical Claims Specialist</p>
+          <p>Teleperformance</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container contact-grid">
+
+      <div class="contact-info">
+        <p class="eyebrow">Get in touch</p>
+        <h2 style="font-size:2.8rem; color:var(--forest);">
+          Let's connect.
+        </h2>
+
+        <p>
+          Looking for dependable healthcare administrative support?
+          I'd love to learn more about your practice and the tasks
+          where you could use an extra hand.
+        </p>
+
+        <ul class="contact-list">
+          <li><strong>Email:</strong>
+            <a href="mailto:jeremae.workemail@gmail.com">
+              jeremae.workemail@gmail.com
+            </a>
+          </li>
+
+          <li><strong>Phone:</strong>
+            <a href="tel:+639052112058">
+              +63 905 211 2058
+            </a>
+          </li>
+
+          <li><strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/in/jeremae-mercado-49745a3a1/"
+               target="_blank" rel="noopener noreferrer">
+              Connect with me
+            </a>
+          </li>
+
+          <li><strong>Time Zone:</strong> Philippine Time (UTC+8)</li>
+          <li><strong>Location:</strong> Philippines · Remote</li>
+        </ul>
+      </div>
+
+      <div class="contact-panel">
+        <p class="eyebrow">Book directly</p>
+        <h3>Have questions or want to discuss your needs?</h3>
+
+        <p>
+          Schedule a complimentary 30-minute call. We'll talk about
+          your practice, current administrative challenges, and how
+          I may be able to help.
+        </p>
+
+        <a href="https://calendly.com/jeremae-workemail/30min"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-primary">
+          Book a Call with Jeremae
+        </a>
+
+        <p style="margin-top:20px;font-size:.83rem;">
+          Prefer email?
+          <a href="mailto:jeremae.workemail@gmail.com"
+             style="color:var(--forest);font-weight:700;">
+            Send me a message instead.
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+
+      <div>
+        <p><strong>Jeremae Mercado</strong></p>
+        <p>Healthcare Virtual Assistant</p>
+        <p>Supporting healthcare practices with care, accuracy, and consistency.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="https://calendly.com/jeremae-workemail/30min"
+           target="_blank" rel="noopener noreferrer">Book a Call</a>
+      </div>
+
+    </div>
+
+    <div class="container" style="margin-top:25px;">
+      <p>© 2026 Jeremae Mercado · Healthcare Virtual Assistant</p>
+    </div>
+  </footer>
 
 </body>
 </html>
