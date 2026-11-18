@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeremae Mercado | Healthcare Virtual Assistant</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1f2d3d; line-height: 1.6; background: #f6f9fb; }
+  header { background: linear-gradient(135deg, #0b5d7a, #1a9ba1); color: #fff; padding: 70px 20px; text-align: center; }
+  header h1 { font-size: 2.4rem; margin-bottom: 8px; }
+  header p { font-size: 1.15rem; opacity: 0.95; }
+  .btn { display: inline-block; margin-top: 22px; padding: 12px 28px; background: #fff; color: #0b5d7a; border-radius: 30px; text-decoration: none; font-weight: 600; }
+  section { max-width: 980px; margin: 0 auto; padding: 50px 20px; }
+  h2 { color: #0b5d7a; font-size: 1.7rem; margin-bottom: 20px; border-bottom: 3px solid #1a9ba1; display: inline-block; padding-bottom: 4px; }
+  .card { background: #fff; border-radius: 12px; padding: 22px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .card h3 { color: #0b5d7a; margin-bottom: 2px; }
+  .meta { color: #6b7c8d; font-size: 0.92rem; margin-bottom: 10px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skills span { background: #e3f4f5; color: #0b5d7a; padding: 8px 16px; border-radius: 20px; font-size: 0.95rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  footer { background: #0b5d7a; color: #fff; text-align: center; padding: 30px 20px; }
+  footer a { color: #fff; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Jeremae Mercado</h1>
+  <p>Healthcare Virtual Assistant | Scheduling, Billing and Referral Support</p>
+  <p>6+ years of US healthcare BPO experience</p>
+  <a class="btn" href="#contact">Work With Me</a>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>I am a healthcare virtual assistant with more than six years of experience in US healthcare customer service, medical billing support, and quality control. I help medical practices stay organized by handling scheduling, insurance verification, billing follow-ups, and referral coordination with accuracy and a strong respect for HIPAA compliance.</p>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="card"><h3>Scheduling Support</h3><p>Appointment booking, reminders, calendar management, and patient communication.</p></div>
+    <div class="card"><h3>Billing Support</h3><p>Claims review, eligibility and benefits verification, and billing follow-ups.</p></div>
+    <div class="card"><h3>Referral Coordination</h3><p>Referral intake, tracking, and follow-through between providers and practices.</p></div>
+    <div class="card"><h3>Quality Control</h3><p>Audits, documentation review, and accuracy checks to reduce errors.</p></div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <h3>Healthcare Virtual Assistant (Referral Specialist)</h3>
+    <div class="meta">Animo Sano Psychiatry | Project-based, 2 months</div>
+    <ul>
+      <li>Managed referral intake and tracking for a psychiatric practice.</li>
+      <li>Built and used a referral tracker in Google Sheets to organize incoming referrals and flag urgent cases.</li>
+      <li>Coordinated follow-ups to keep referrals moving and documentation complete.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Quality Control Analyst / Billing Support Associate</h3>
+    <div class="meta">Omega Healthcare Management Services Inc. | Feb 2022 to Jul 2025</div>
+    <ul>
+      <li>Performed quality audits on medical billing and claims work to maintain accuracy and compliance.</li>
+      <li>Supported billing operations, including claims and eligibility verification.</li>
+      <li>Documented findings and gave feedback to improve team performance.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Customer Service Representative (Healthcare and Insurance)</h3>
+    <div class="meta">Teleperformance Cebu | Nov 2017 to Jan 2021</div>
+    <ul>
+      <li>Handled inbound healthcare and insurance inquiries for US clients.</li>
+      <li>Verified eligibility and benefits and resolved member concerns.</li>
+      <li>Maintained accurate documentation in CRM systems while following HIPAA guidelines.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span>Healthcare Insurance</span>
+    <span>Medical Billing</span>
+    <span>Claims and Eligibility Verification</span>
+    <span>Quality Audits</span>
+    <span>HIPAA Compliance</span>
+    <span>CRM</span>
+    <span>Documentation</span>
+    <span>Microsoft Office</span>
+    <span>Google Sheets</span>
+  </div>
+</section>
+
+<section id="certificates">
+  <h2>Certificates</h2>
+  <div class="grid">
+    <div class="card"><h3>Medical Administrative Assistants and Office Procedures</h3><div class="meta">MedCerts via Coursera | Oct 16, 2026</div></div>
+    <div class="card"><h3>Medical Billing and Coding Essentials</h3><div class="meta">MedCerts via Coursera | Oct 17, 2026</div></div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="card">
+    <h3>BS in Business Administration, Major in Quality Management</h3>
+    <div class="meta">Cebu Institute of Technology - University</div>
+  </div>
+</section>
+
+<section id="references">
+  <h2>Character References</h2>
+  <div class="grid">
+    <div class="card"><h3>Jeremiah Magallanes</h3><div class="meta">Healthcare Executive Assistant, Animo Sano Psychiatry</div></div>
+    <div class="card"><h3>Jonathan Maglangit</h3><div class="meta">QCA Team Lead, Omega</div></div>
+    <div class="card"><h3>April Rose Calzita</h3><div class="meta">Senior Medical Claims Specialist, Teleperformance</div></div>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2 style="color:#fff;border-color:#fff;">Contact</h2>
+  <p>Email: <a href="mailto:jeremae.workemail@gmail.com">jeremae.workemail@gmail.com</a></p>
+  <p>Phone: +63 905 211 2058</p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/jeremae-mercado-49745a3a1">linkedin.com/in/jeremae-mercado-49745a3a1</a></p>
+  <p>Time zone: PHT (UTC+8) | Cebu, Philippines</p>
+</footer>
+
+</body>
+</html>
