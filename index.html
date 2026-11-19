@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jeremae Mercado | Medical Virtual Assistant</title>
-<meta name="description" content="Medical Virtual Assistant with 6+ years in healthcare customer service and quality control.">
+<meta name="description" content="Medical Virtual Assistant helping U.S. healthcare practices with insurance verification, billing support and patient referrals. 6+ years of experience.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -52,16 +52,38 @@ footer{text-align:center;padding:26px;font-size:.9rem;border-top:1px solid var(-
 .certs{grid-template-columns:repeat(2,1fr)}
 .work .two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
 }
+.nav{position:sticky;top:0;z-index:50;background:rgba(245,236,217,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{max-width:1040px;margin:0 auto;padding:12px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px}
+.nav .logo{font-weight:700;letter-spacing:.04em;text-decoration:none;font-size:.95rem}
+.nav ul{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:4px 18px;margin-left:auto}
+.nav a.l{text-decoration:none;font-weight:500;font-size:.95rem;padding:4px 0;border-bottom:2px solid transparent}
+.nav a.l:hover{border-color:var(--brown)}
+.nav a.cta{background:var(--ink);color:var(--cream);padding:9px 18px;border-radius:30px;text-decoration:none;font-weight:700;font-size:.92rem}
+section,header{scroll-margin-top:70px}
+@media(max-width:560px){.nav .logo{display:none}.nav ul{margin:0 auto;justify-content:center;gap:6px 14px}.nav a.l,.nav a.cta{font-size:.84rem}.nav a.cta{padding:7px 14px}}
 :focus-visible{outline:3px solid var(--brown);outline-offset:3px}
 </style>
 </head>
 <body>
 
-<header class="wrap hero">
+<nav class="nav" aria-label="Main">
+  <div class="in">
+    <a class="logo" href="#home">JEREMAE MERCADO</a>
+    <ul>
+      <li><a class="l" href="#home">Home</a></li>
+      <li><a class="l" href="#about">About</a></li>
+      <li><a class="l" href="#services">Services</a></li>
+      <li><a class="l" href="#samples">Portfolio</a></li>
+      <li><a class="cta" href="https://calendly.com/jeremae-workemail/30min" target="_blank" rel="noopener">Book a Call!</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="home" class="wrap hero">
   <div>
     <p class="name">JEREMAE MERCADO</p>
     <h1>Medical<br>Virtual A<span class="brown">s</span>sistant</h1>
-    <p class="lead">Hi, I’m a Medical Virtual Assistant with 6+ years of experience in healthcare customer service and quality control. I specialize in insurance verification, billing follow-ups, patient coordination, email and calendar management, data entry, and organized file management. With strong attention to detail, HIPAA awareness, and reliable administrative support, I help healthcare practices keep their daily operations efficient and organized.</p>
+    <p class="lead">Your patients deserve accurate answers, and your team deserves their time back. With 6+ years in U.S. healthcare customer service and quality control, I handle insurance verification, billing follow-ups and patient referrals so your practice runs smoothly. I built a referral tracker that puts urgent cases first, and I protect every patient's information with HIPAA-compliant care.</p>
     <a class="btn" href="https://calendly.com/jeremae-workemail/30min" target="_blank" rel="noopener">Book a discovery call</a>
     <a class="btn alt" href="#resume">View resume</a>
   </div>
