@@ -373,25 +373,31 @@ R.classList.add('ready');
 </script>
 <script>
 (function(){const f=document.getElementById('msgform');if(!f)return;
-const st=f.querySelector('.cf-status'),btn=f.querySelector('button[type=submit]'),TO='jeremae.workemail@gmail.com';
+const TO='jeremae.workemail@gmail.com',W3F_KEY='';/* optional: paste a free Web3Forms access key here to use it instead of FormSubmit */
+const st=f.querySelector('.cf-status'),btn=f.querySelector('button[type=submit]');
 const say=(t,k)=>{st.textContent=t;st.className='cf-status '+(k||'')};
+async function send(name,email,msg){const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),12000);
+ try{let r,j;
+  if(W3F_KEY){r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},signal:ctl.signal,body:JSON.stringify({access_key:W3F_KEY,name,email,message:msg,subject:'New portfolio message from '+name,from_name:'Portfolio website'})});
+   j=await r.json().catch(()=>({}));return{ok:r.ok&&j.success===true,why:j.message||('HTTP '+r.status)}}
+  r=await fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},signal:ctl.signal,
+   body:JSON.stringify({name,email,message:msg,_subject:'New portfolio message from '+name,_replyto:email,_template:'table',_captcha:'false'})});
+  j=await r.json().catch(()=>({}));return{ok:r.ok&&(j.success===true||j.success==='true'),why:j.message||('HTTP '+r.status)}
+ }catch(e){return{ok:false,why:location.protocol==='file:'?'this page is open as a file on your computer and must be on a web address to send':'the request was blocked (no internet, or this page does not allow outside requests)'}}
+ finally{clearTimeout(tm)}}
 f.addEventListener('submit',async e=>{e.preventDefault();
  const d=Object.fromEntries(new FormData(f));
  if(d._honey){say('Thank you! Your message was sent.','ok');f.reset();return}
  const name=(d.name||'').trim(),email=(d.email||'').trim(),msg=(d.message||'').trim();
  if(!name||!/^\S+@\S+\.\S+$/.test(email)||!msg){say('Please add your name, a valid email and a message.','err');return}
  btn.disabled=true;say('Sending your message...');
- try{const ctl=new AbortController(),tm=setTimeout(()=>ctl.abort(),12000);
-  const r=await fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},signal:ctl.signal,
-   body:JSON.stringify({name,email,message:msg,_subject:'New portfolio message from '+name,_replyto:email,_template:'table',_captcha:'false'})});
-  clearTimeout(tm);const j=await r.json().catch(()=>({}));
-  if(r.ok&&(j.success===true||j.success==='true')){say('Thank you, '+name.split(' ')[0]+'! Your message was sent. I will reply to '+email+'.','ok');f.reset();btn.disabled=false;return}
-  throw new Error('not sent')
- }catch(err){
-  const url='mailto:'+TO+'?subject='+encodeURIComponent('Portfolio message from '+name)+'&body='+encodeURIComponent(msg+'\n\n'+name+'\n'+email);
-  say('It could not be sent automatically, so your email app is opening with your message ready. If nothing opens, ','err');
-  const a=document.createElement('a');a.href=url;a.textContent='tap here to email me';st.append(a,'.');
-  btn.disabled=false;setTimeout(()=>{location.href=url},400)}
+ const res=await send(name,email,msg);
+ if(res.ok){say('Thank you, '+name.split(' ')[0]+'! Your message was sent. I will reply to '+email+'.','ok');f.reset();btn.disabled=false;return}
+ console.warn('Contact form could not send:',res.why);
+ const url='mailto:'+TO+'?subject='+encodeURIComponent('Portfolio message from '+name)+'&body='+encodeURIComponent(msg+'\n\n'+name+'\n'+email);
+ say('It could not be sent automatically ('+res.why+'). Your email app is opening with your message ready. If nothing opens, ','err');
+ const a=document.createElement('a');a.href=url;a.textContent='tap here to email me';const g=document.createElement('a');g.href='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(TO)+'&su='+encodeURIComponent('Portfolio message from '+name)+'&body='+encodeURIComponent(msg+'\n\n'+name+'\n'+email);g.target='_blank';g.rel='noopener';g.textContent='open it in Gmail';st.append(a,' or ',g,'.');
+ btn.disabled=false;setTimeout(()=>{location.href=url},500)
 });})();
 </script>
 </body>
